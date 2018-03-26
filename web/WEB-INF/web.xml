@@ -13,4 +13,13 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <servlet-class>com.orm.web.servlet.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+
 </web-app>
