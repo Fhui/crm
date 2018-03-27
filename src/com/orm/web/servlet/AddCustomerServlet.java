@@ -1,5 +1,9 @@
 package com.orm.web.servlet;
 
+import com.orm.domain.Customer;
+import com.orm.service.CustomerService;
+import com.orm.service.CustomerServiceImpl;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +22,15 @@ public class AddCustomerServlet extends HttpServlet {
         String custLinkman = req.getParameter("cust_linkman"); //联系人
         String custPhone = req.getParameter("cust_phone"); //固定电话
         String custMobile = req.getParameter("cust_mobile"); //移动电话
-
+        CustomerService service = new CustomerServiceImpl();
+        Customer customer = new Customer();
+        customer.setCust_name(custName);
+        customer.setCust_level(custLevel);
+        customer.setCust_source(custSource);
+        customer.setCust_linkman(custLinkman);
+        customer.setCust_phone(custPhone);
+        customer.setCust_mobile(custMobile);
+        service.save(customer);
     }
 
     @Override
