@@ -2,7 +2,7 @@ package com.orm.web.servlet;
 
 import com.orm.domain.Customer;
 import com.orm.service.CustomerService;
-import com.orm.service.CustomerServiceImpl;
+import com.orm.service.impl.CustomerServiceImpl;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
