@@ -13,4 +13,22 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <servlet-class>com.orm.web.servlet.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>com.orm.web.filter.GenericEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
