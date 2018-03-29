@@ -31,6 +31,7 @@ public class AddCustomerServlet extends HttpServlet {
         customer.setCust_phone(custPhone);
         customer.setCust_mobile(custMobile);
         service.save(customer);
+        resp.sendRedirect(req.getContextPath()+"/customerList");
     }
 
     @Override

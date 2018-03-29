@@ -22,6 +22,16 @@
         <url-pattern>/addCustomer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>customerListServlet</servlet-name>
+        <servlet-class>com.orm.web.servlet.CustomerListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customerListServlet</servlet-name>
+        <url-pattern>/customerList</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>com.orm.web.filter.GenericEncodingFilter</filter-class>
