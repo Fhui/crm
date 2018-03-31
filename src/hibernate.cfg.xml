@@ -63,6 +63,7 @@
             路径书写: 填写src下的路径
          -->
         <mapping resource="com/orm/domain/Customer.hbm.xml"/>
+        <mapping resource="com/orm/domain/LinkMan.hbm.xml"/>
 
         <mapping class="com.orm.domain.CstCustomerEntity"/>
 

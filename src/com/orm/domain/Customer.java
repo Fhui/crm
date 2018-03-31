@@ -1,5 +1,8 @@
 package com.orm.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by harry.feng on 2018/3/22 .
  */
@@ -27,6 +30,19 @@ public class Customer {
     private String cust_linkman;
     private String cust_phone;
     private String cust_mobile;
+
+    public Set<LinkMan> getLinkMans() {
+        return linkMans;
+    }
+
+    public void setLinkMans(Set<LinkMan> linkMans) {
+        this.linkMans = linkMans;
+    }
+
+    private Set<LinkMan> linkMans = new HashSet<>();
+
+
+
     public Long getCust_id() {
         return cust_id;
     }

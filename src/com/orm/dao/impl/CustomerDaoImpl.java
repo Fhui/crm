@@ -24,4 +24,9 @@ public class CustomerDaoImpl implements CustomerDao {
         Query query = currentSession.createQuery(HQL);
         return query.list();
     }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        return HibernateUtils.getCurrentSession().get(Customer.class, id);
+    }
 }

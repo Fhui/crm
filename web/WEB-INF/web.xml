@@ -31,6 +31,25 @@
         <url-pattern>/customerList</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addLinkManList</servlet-name>
+        <servlet-class>com.orm.web.servlet.AddLinkManServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addLinkManList</servlet-name>
+        <url-pattern>/addLinkMan</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>linkManList</servlet-name>
+        <servlet-class>com.orm.web.servlet.LinkManListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>linkManList</servlet-name>
+        <url-pattern>/linkManList</url-pattern>
+    </servlet-mapping>
+
+
 
     <filter>
         <filter-name>encodingFilter</filter-name>
