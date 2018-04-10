@@ -5,8 +5,11 @@ import com.orm.dao.impl.CustomerDaoImpl;
 import com.orm.domain.Customer;
 import com.orm.service.CustomerService;
 import com.orm.utils.HibernateUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,6 +44,21 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (Exception e) {
             e.printStackTrace();
             transaction.commit();
+        }
+        transaction.commit();
+        return list;
+    }
+
+    @Override
+    public List getAllList(DetachedCriteria detachedCriteria) {
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        List list = new ArrayList();
+        try{
+            list = dao.getAllList(detachedCriteria);
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
         }
         transaction.commit();
         return list;
