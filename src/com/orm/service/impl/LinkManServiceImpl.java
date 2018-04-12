@@ -8,8 +8,10 @@ import com.orm.domain.Customer;
 import com.orm.domain.LinkMan;
 import com.orm.service.LinkManService;
 import com.orm.utils.HibernateUtils;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -19,7 +21,6 @@ import java.util.List;
 public class LinkManServiceImpl implements LinkManService {
 
     private LinkManDao dao = new LinkManDaoImpl();
-
 
 
     @Override
@@ -41,5 +42,20 @@ public class LinkManServiceImpl implements LinkManService {
     @Override
     public List getLinkManList() {
         return dao.getLinkManList();
+    }
+
+    @Override
+    public List getLinkManList(DetachedCriteria detachedCriteria) {
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        List list = null;
+        try {
+            list = dao.getLinkManList(detachedCriteria);
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        transaction.commit();
+        return list;
     }
 }

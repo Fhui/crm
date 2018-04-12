@@ -1,6 +1,7 @@
 package com.orm.dao;
 
 import com.orm.domain.LinkMan;
+import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface LinkManDao {
    void save(LinkMan linkMan);
 
     List getLinkManList();
+
+    List getLinkManList(DetachedCriteria detachedCriteria);
 }

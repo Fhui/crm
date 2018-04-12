@@ -3,7 +3,6 @@ package com.orm.web.servlet;
 import com.orm.domain.Customer;
 import com.orm.service.CustomerService;
 import com.orm.service.impl.CustomerServiceImpl;
-import com.sun.tools.javac.util.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -23,7 +22,7 @@ public class CustomerListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String custName = req.getParameter("cust_name");
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Customer.class);
-        if (!(null == custName) && ! ("".equals(custName))) {
+        if (!(null == custName) && !("".equals(custName))) {
             detachedCriteria.add(Restrictions.like("cust_name", "%" + custName + "%"));
         }
         CustomerService service = new CustomerServiceImpl();
