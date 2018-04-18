@@ -50,13 +50,23 @@
     </servlet-mapping>
 
 
-
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>com.orm.web.filter.GenericEncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--struts核心过滤器-->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
