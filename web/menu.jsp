@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -136,7 +137,7 @@
                                                            target=main>－ 新增客户</A></TD>
                                 </TR>
                                 <TR>
-                                    <TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/CustomerListAction_getCustomerList"
+                                    <TD class=menuSmall><A class=style2 href="<s:url action="CustomerAction_getCustomerList"/>"
                                                            target=main>－ 客户列表</A></TD>
                                 </TR>
 
@@ -163,7 +164,7 @@
                                                            target=main>－ 新增联系人</A></TD>
                                 </TR>
                                 <TR>
-                                    <TD class=menuSmall><A class=style2 href="linkManList?method=list"
+                                    <TD class=menuSmall><A class=style2 href="<s:url action="LinkmanAction_getList"/>"
                                                            target=main>－联系人列表</A></TD>
                                 </TR>
 

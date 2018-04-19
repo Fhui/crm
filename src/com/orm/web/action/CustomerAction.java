@@ -1,31 +1,45 @@
 package com.orm.web.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import com.orm.domain.Customer;
 import com.orm.service.CustomerService;
 import com.orm.service.impl.CustomerServiceImpl;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
 /**
+ * 联系人 Action
  * Created by harry.feng on 2018/4/18 .
  */
-public class CustomerListAction extends ActionSupport {
+public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
+
+    private Customer customer = new Customer();
+    private CustomerService service = new CustomerServiceImpl();
 
     public String getCustomerList() {
-        String custName = ServletActionContext.getRequest().getParameter("cust_name");
+        String custName = customer.getCust_name();
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Customer.class);
         if (StringUtils.isNoneBlank(custName)) { //判空
             detachedCriteria.add(Restrictions.like("cust_name", "%" + custName + "%"));
         }
-        CustomerService service = new CustomerServiceImpl();
         List allList = service.getAllList(detachedCriteria);
-        ServletActionContext.getRequest().setAttribute("list", allList);
+        ActionContext.getContext().put("list", allList);
         return "list";
     }
 
+
+    public String addCustomer() {
+        service.save(customer);
+        return "toList";
+    }
+
+    @Override
+    public Customer getModel() {
+        return customer;
+    }
 }

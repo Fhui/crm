@@ -25,7 +25,7 @@
 </HEAD>
 <BODY>
 	<FORM id="customerForm" name="customerForm"
-		action="<s:url action="CustomerListAction_getCustomerList"/>"
+		action="<s:url action="CustomerAction_getCustomerList"/>"
 		method=post>
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>

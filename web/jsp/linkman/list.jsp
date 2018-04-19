@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +25,7 @@
 </HEAD>
 <BODY>
 <FORM id="customerForm" name="customerForm"
-      action="${pageContext.request.contextPath }/linkManList"
+      action="<s:url action="LinkmanAction_getList"/>"
       method=post>
 
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -88,7 +89,7 @@
                                     <TD>手机</TD>
                                     <TD>操作</TD>
                                 </TR>
-                                <c:forEach items="${list }" var="linkman">
+                                <c:forEach items="${linkmanlist }" var="linkman">
                                     <TR
                                             style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
                                         <TD>${linkman.lkm_name }</TD>
