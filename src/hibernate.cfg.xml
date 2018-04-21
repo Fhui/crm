@@ -64,7 +64,7 @@
          -->
         <mapping resource="com/orm/domain/Customer.hbm.xml"/>
         <mapping resource="com/orm/domain/LinkMan.hbm.xml"/>
-
+        <mapping resource="com/orm/domain/User.hbm.xml"/>
         <mapping class="com.orm.domain.CstCustomerEntity"/>
 
     </session-factory>

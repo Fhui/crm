@@ -16,6 +16,9 @@
 
         <!--struts2安全验证-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
         <!--客户Action-->
         <action name="CustomerAction_*" class="com.orm.web.action.CustomerAction" method="{1}">
             <!--获取客户列表method-->
@@ -35,6 +38,12 @@
                 <param name="actionName">LinkmanAction_getList</param>
                 <param name="namespace">/</param>
             </result>
+        </action>
+
+        <!--登陆Action-->
+        <action name="LoginAction_*" class="com.orm.web.action.LoginAction" method="{1}">
+            <result name="toIndex" type="redirect">/index.htm</result>
+            <result name="error" >/login.jsp</result>
         </action>
 
     </package>
