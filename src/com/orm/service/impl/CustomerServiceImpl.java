@@ -19,14 +19,14 @@ import java.util.List;
  * Created by harry.feng on 2018/3/26 .
  */
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerDao dao = new CustomerDaoImpl();
+    private CustomerDao customerDao;
 
     @Override
     public void save(Customer customer) {
         Session session = HibernateUtils.getCurrentSession();
         Transaction transaction = session.beginTransaction();
         try {
-            dao.save(customer);
+            customerDao.save(customer);
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
         Transaction transaction = session.beginTransaction();
         List list = new ArrayList<>();
         try {
-            list = dao.getAllList();
+            list = customerDao.getAllList();
         } catch (Exception e) {
             e.printStackTrace();
             transaction.commit();
@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
         Transaction transaction = session.beginTransaction();
         List list = new ArrayList();
         try{
-            list = dao.getAllList(detachedCriteria);
+            list = customerDao.getAllList(detachedCriteria);
         }catch (Exception e){
             transaction.rollback();
             e.printStackTrace();
@@ -68,5 +68,13 @@ public class CustomerServiceImpl implements CustomerService {
     public void testQuery() {
         List allList = getAllList();
         System.out.println(allList);
+    }
+
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
+
+    public CustomerDao getCustomerDao() {
+        return customerDao;
     }
 }

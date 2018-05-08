@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean name="customDao" class="com.orm.dao.impl.CustomerDaoImpl"/>
+    <bean name="linkmanDao" class="com.orm.dao.impl.LinkManDaoImpl"/>
+    <bean name="userDao" class="com.orm.dao.impl.UserDaoImpl"/>
+
+    <bean name="customService" class="com.orm.service.impl.CustomerServiceImpl">
+        <property name="customerDao" ref="customDao"/>
+    </bean>
+
+    <bean name="linkmanService" class="com.orm.service.impl.LinkManServiceImpl">
+        <property name="linkManDao" ref="linkmanDao"/>
+    </bean>
+
+    <bean name="userService" class="com.orm.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.orm.domain.LinkMan;
 import com.orm.service.LinkManService;
 import com.orm.service.impl.LinkManServiceImpl;
+import com.orm.utils.SpringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -18,7 +19,7 @@ import java.util.List;
 public class LinkmanAction extends ActionSupport implements ModelDriven<LinkMan> {
 
     private LinkMan linkMan = new LinkMan();
-    private LinkManService service = new LinkManServiceImpl();
+    private LinkManService service = (LinkManService) SpringUtils.getAcObj().getBean("linkmanService");
 
     public String getList() {
         String search = linkMan.getLkm_name();

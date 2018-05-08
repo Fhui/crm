@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.orm.domain.User;
 import com.orm.service.UserService;
 import com.orm.service.impl.UserServiceImpl;
+import com.orm.utils.SpringUtils;
 
 /**
  * 登陆Action
@@ -16,7 +17,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
     private User user = new User();
 
     public String login() {
-        UserService service = new UserServiceImpl();
+        UserService service = (UserService) SpringUtils.getAcObj().getBean("userService");
         User queryUser = service.login(user);
         ActionContext.getContext().put("user", queryUser);
         return "toIndex";

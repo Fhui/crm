@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class LinkManServiceImpl implements LinkManService {
 
-    private LinkManDao dao = new LinkManDaoImpl();
+    private LinkManDao linkManDao;
 
 
     @Override
@@ -31,7 +31,7 @@ public class LinkManServiceImpl implements LinkManService {
         Customer customer = customerDao.getCustomerById(linkMan.getCustom_id());
         linkMan.setCustomer(customer);
         try {
-            dao.save(linkMan);
+            linkManDao.save(linkMan);
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class LinkManServiceImpl implements LinkManService {
 
     @Override
     public List getLinkManList() {
-        return dao.getLinkManList();
+        return linkManDao.getLinkManList();
     }
 
     @Override
@@ -50,12 +50,20 @@ public class LinkManServiceImpl implements LinkManService {
         Transaction transaction = session.beginTransaction();
         List list = null;
         try {
-            list = dao.getLinkManList(detachedCriteria);
+            list = linkManDao.getLinkManList(detachedCriteria);
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();
         }
         transaction.commit();
         return list;
+    }
+
+    public LinkManDao getLinkManDao() {
+        return linkManDao;
+    }
+
+    public void setLinkManDao(LinkManDao linkManDao) {
+        this.linkManDao = linkManDao;
     }
 }

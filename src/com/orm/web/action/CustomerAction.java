@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.orm.domain.Customer;
 import com.orm.service.CustomerService;
 import com.orm.service.impl.CustomerServiceImpl;
+import com.orm.utils.SpringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
 
     private Customer customer = new Customer();
-    private CustomerService service = new CustomerServiceImpl();
+    private CustomerService service = (CustomerService) SpringUtils.getAcObj().getBean("customService");
 
     public String getCustomerList() {
         String custName = customer.getCust_name();
